@@ -13,17 +13,18 @@
                         <div class="quickview_body">
                             <div class="container">
                                 <div class="row">
+                                	@foreach($products as $product)
                                     <div class="col-12 col-lg-5">
                                         <div class="quickview_pro_img">
-                                            <img src="img/product-img/product-1.jpg" alt="">
+                                            <img src="{{ $product->image }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-7">
+                                    	
                                         <div class="quickview_pro_des">
-                                            <h4 class="title">Boutique Silk Dress</h4>
-                                            <h5 class="price">$120.99 <span>$130</span></h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
-                                            <a href="#">View Full Product Details</a>
+                                            <h4 class="title">{{ $product->name }}</h4>
+                                            <h5 class="price">{{ $product->price }} тг</h5>
+                                            <a href="{{ route('product.show', $product->id) }}">View Full Product Details</a>
                                         </div>
                                         <!-- Add to Cart Form -->
                                         <form class="cart" method="post">
@@ -40,7 +41,7 @@
                                                 <a href="wishlist.html" target="_blank"><i class="ti-heart"></i></a>
                                             </div>
                                         </form>
-
+                                        
                                         <div class="share_wf mt-30">
                                             <p>Share With Friend</p>
                                             <div class="_icon">
@@ -51,6 +52,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -74,10 +76,12 @@
                                         <ul id="menu-content2" class="menu-content collapse out">
                                             <!-- Single Item -->
                                             @foreach($categories as $category)
-                                            <li data-toggle="collapse" data-target="#women2">
+                                            <li data-toggle="collapse" data-target="#{{$category->id}}">
                                                 <a href="#">{{ $category->name }}</a>
-                                                <ul class="sub-menu collapse show" id="women2">
-                                                    <li><a href="#">Midi Dresses</a></li>
+                                                <ul class="sub-menu collapse show" id="{{ $category->id }}">
+                                                    @foreach($category->children as $categoryItem)
+                                                        <li><a href="#">{{$categoryItem->name}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             @endforeach
@@ -91,168 +95,25 @@
                     <div class="col-12 col-md-8 col-lg-9">
                         <div class="shop_grid_product_area">
                             <div class="row">
-
+                            	@foreach($products as $product)
                                 <!-- Single gallery Item -->
                                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <img src="img/product-img/product-1.jpg" alt="">
+                                        <img src="{{ $product->image }}" alt="">
                                         <div class="product-quicview">
                                             <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
                                         </div>
                                     </div>
                                     <!-- Product Description -->
                                     <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
+                                        <h4 class="product-price">{{ $product->price }} тг</h4>
+                                        <p>{{ $product->name }}</p>
                                         <!-- Add to Cart -->
                                         <a href="#" class="add-to-cart-btn">ADD TO CART</a>
                                     </div>
                                 </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.3s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-2.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.4s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-3.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.5s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-4.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.6s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-5.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.7s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-6.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.8s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-7.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.9s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-8.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
-
-                                <!-- Single gallery Item -->
-                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="1s">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="img/product-img/product-9.jpg" alt="">
-                                        <div class="product-quicview">
-                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <h4 class="product-price">$39.90</h4>
-                                        <p>Jeans midi cocktail dress</p>
-                                        <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 

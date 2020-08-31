@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         return view('home', compact('categories'));
     }
 
@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
 
     public function shop() {
-        $categories = Category::all();
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         $products = Product::all();
         return view('shop', compact('categories', 'products'));
     }

@@ -34,10 +34,12 @@
                 <ul id="menu-content" class="menu-content collapse out">
                     <!-- Single Item -->
                     @foreach($categories as $category)
-                    <li data-toggle="collapse" data-target="#women" class="collapsed active">
+                    <li data-toggle="collapse" data-target="#{{ $category->id }}" class="collapsed active">
                         <a href="#">{{ $category->name }} <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="women">
-                            <li><a href="#">Midi Dresses</a></li>
+                        <ul class="sub-menu collapse show" id="{{$category->id}}">
+                            @foreach($category->children as $categoryItem)
+                                <li><a href="#">{{ $categoryItem->name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     @endforeach
