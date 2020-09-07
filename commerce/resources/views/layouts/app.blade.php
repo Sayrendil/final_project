@@ -17,6 +17,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/core-style.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/demo.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/mockup1.css') }}" />
+    <script src="{{ asset('js/modernizr.custom.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/demo.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{asset('css/set1.css') }}" />
 
     <!-- Responsive CSS -->
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
@@ -33,7 +39,7 @@
                 <h6>Категории</h6>
                 <ul id="menu-content" class="menu-content collapse out">
                     <!-- Single Item -->
-                    @foreach($categories as $category)
+                    @foreach($Sharecategories as $category)
                     <li data-toggle="collapse" data-target="#{{ $category->id }}" class="collapsed active">
                         <a href="#">{{ $category->name }} <span class="arrow"></span></a>
                         <ul class="sub-menu collapse show" id="{{$category->id}}">
@@ -129,7 +135,7 @@
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="index.html">Главная</a></li>
+                                            <li class="nav-item active"><a class="nav-link" href="{{ route('index') }}">Главная</a></li>
                                             <li class="nav-item active"><a class="nav-link" href="{{ route('shop') }}">Магазин</a></li>
                                             <li class="nav-item"><a class="nav-link" href="{{ route('action') }}">Акции</a></li>
                                             <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Контакты</a></li>
@@ -232,6 +238,45 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{ asset('js/plugins.js') }}"></script>
     <!-- Active js -->
     <script src="{{ asset('js/active.js') }}"></script>    
+    <script src="{{ asset('js/classie.js') }}"></script>
+		<script src="js/main.js"></script>
+		<script>
+			(function() {
+				new Slideshow( document.getElementById( 'slideshow' ) );
+
+				/* Mockup responsiveness */
+				var body = docElem = window.document.documentElement,
+					wrap = document.getElementById( 'wrap' ),
+					mockup = wrap.querySelector( '.mockup' ),
+					mockupWidth = mockup.offsetWidth;
+
+				scaleMockup();
+
+				function scaleMockup() {
+					var wrapWidth = wrap.offsetWidth,
+						val = wrapWidth / mockupWidth;
+
+					mockup.style.transform = 'scale3d(' + val + ', ' + val + ', 1)';
+				}
+				
+				window.addEventListener( 'resize', resizeHandler );
+
+				function resizeHandler() {
+					function delayed() {
+						resize();
+						resizeTimeout = null;
+					}
+					if ( typeof resizeTimeout != 'undefined' ) {
+						clearTimeout( resizeTimeout );
+					}
+					resizeTimeout = setTimeout( delayed, 50 );
+				}
+
+				function resize() {
+					scaleMockup();
+				}
+			})();
+		</script>
 </body>
 
 

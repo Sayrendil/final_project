@@ -18,10 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('content');
             $table->double('price');
-            $table->unsignedBigInteger('image_id');
             $table->timestamps();
-
-            $table->foreign('image_id')->on('images')->references('id');
         });
     }
 

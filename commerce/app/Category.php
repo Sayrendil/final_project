@@ -8,7 +8,7 @@ use App\Product;
 
 class Category extends Model
 {
-    protected $fillable = ['name', 'parent_id'];
+    protected $fillable = ['name', 'parent_id', 'level'];
 	
     public function parent() {
     	return $this->belongsTo(self::class, 'parent_id');
@@ -19,6 +19,6 @@ class Category extends Model
     }
 
     public function products() {
-    	return $this->belongsToMany(Product::class, 'product_categories');
+    	return $this->belongsToMany(Product::class, 'product_categories', 'category_id', 'product_id');
     }
 }

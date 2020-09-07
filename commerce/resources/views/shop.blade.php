@@ -16,7 +16,7 @@
                                 	@foreach($products as $product)
                                     <div class="col-12 col-lg-5">
                                         <div class="quickview_pro_img">
-                                            <img src="{{ $product->image }}" alt="">
+                                            <img src="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-7">
@@ -26,16 +26,27 @@
                                             <h5 class="price">{{ $product->price }} тг</h5>
                                             <a href="{{ route('product.show', $product->id) }}">View Full Product Details</a>
                                         </div>
+                                        @foreach($product->images as $productImg)
+                                        <div id="selections" class="selections">
+                                            <div class="swatch" id="{{ $productImg->id }}">
+                                                <img class="product-select" src="{{ $productImg->image }}">
+                                            </div>    
+                                        </div>
+                                        @endforeach
                                         <!-- Add to Cart Form -->
                                         <form class="cart" method="post">
-                                            <div class="quantity">
-                                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                            <div class="form-group">
+                                                <div class="quantity">
+                                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
 
-                                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+                                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
 
-                                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                </div>
                                             </div>
-                                            <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
+                                            
+                                            
+                                            <button type="submit" name="addtocart" value="5" class="cart-submit">В корзину</button>
                                             <!-- Wishlist -->
                                             <div class="modal_pro_wishlist">
                                                 <a href="wishlist.html" target="_blank"><i class="ti-heart"></i></a>
@@ -100,7 +111,9 @@
                                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <img src="{{ $product->image }}" alt="">
+                                        @foreach($product->images as $productImg)
+                                            <img src="{{$productImg->image}}" alt="">
+                                        @endforeach
                                         <div class="product-quicview">
                                             <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
                                         </div>
@@ -110,7 +123,7 @@
                                         <h4 class="product-price">{{ $product->price }} тг</h4>
                                         <p>{{ $product->name }}</p>
                                         <!-- Add to Cart -->
-                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                        <a href="#" class="add-to-cart-btn">В корзину</a>
                                     </div>
                                 </div>
                                 @endforeach

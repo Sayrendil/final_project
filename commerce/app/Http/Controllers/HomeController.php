@@ -5,22 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\Post;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('children')->whereNull('parent_id')->get();
-        return view('home', compact('categories'));
+        return view('home');
     }
 
     public function action() {
-        return view('action');
+        $posts = Post::all();
+        return view('action', compact('posts'));
     }
 
     public function shop() {
         $categories = Category::with('children')->whereNull('parent_id')->get();
-        $products = Product::all();
+        $products = Product::with('images')->get();
+
+
         return view('shop', compact('categories', 'products'));
     }
 

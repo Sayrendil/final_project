@@ -8,42 +8,58 @@ use App\Category;
 
 class ProductController extends Controller
 {
-    public function show(Product $product) {
-    	$categories = Category::all();
-    	return view('products.show', compact('product', 'categories'));
+	public function __construct() {
+        $this->middleware('auth');
     }
 
+    public function show(Product $product) {
+		$productItem = Product::with('images')->get();
+    	return view('products.show', compact('product'));
+	}
+	
+	public function index() {
+		$products = Product::all();
+		return view('admin.products.table', compact('products'));
+	}
+
     public function create() {
-    	return view('admin.product.create');
+    	return view('admin.products.create');
     }
 
     public function store() {
     	request()->validate([
     		'name' => 'required',
     		'content' => 'required',
-    		'price' => 'required',
-    		'image' => 'required',
+			'price' => 'required',
+			'category_id' => 'required'
     	]);
 
-    	Product::create([
+    	$product = Product::create([
     		'name' => request()->name,
     		'content' => request()->content,
-    		'price' => request()->price,
-    		'image' => request()->image,
-    	]);
+			'price' => request()->price,
+			'category_id' => request()->category_id,
+		]);
+		$product->categories()->attach(request()->category);
 
-    	return redirect()->route('admin.product.create');
+    	return redirect()->route('product.index');
     }
 
     public function edit(Product $product) {
-    	return view('admin.product.edit', compact('product'));
+    	return view('admin.products.edit', compact('product'));
     }
 
-    public function update() {
+    public function update(Product $product) {
+		$product->name = request()->name;
+		$product->content = request()->content;
+		$product->price = request()->price;
+        $product->save();
 
+        return redirect(route('product.index', $product));
     }
 
-    public function destroy() {
-    	
+    public function destroy(Product $product) {
+		$product->delete();
+		return redirect()->route('product.index');
     }
 }
