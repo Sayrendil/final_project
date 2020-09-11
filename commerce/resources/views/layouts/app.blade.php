@@ -79,38 +79,33 @@
                             <div class="top_single_area d-flex align-items-center">
                                 <!-- Logo Area -->
                                 <div class="top_logo">
-                                    <a href="{{ route('index') }}"><img src="img/core-img/logo.png" alt=""></a>
+                                    <a href="{{ route('index') }}"><img src="{{ asset('img/core-img/logo.png') }}" alt=""></a>
                                 </div>
                                 <!-- Cart & Menu Area -->
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
-                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i> Корзина</a>
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span> <i class="ti-bag"></i> Корзина</a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
+                                        
                                             <li>
-                                                <a href="#" class="image"><img src="img/product-img/product-10.jpg" class="cart-thumb" alt=""></a>
+                                                <a href="#" class="image"><img src="{{ asset('img/product-img/product-10.jpg')}}" class="cart-thumb" alt=""></a>
                                                 <div class="cart-item-desc">
-                                                    <h6><a href="#">Women's Fashion</a></h6>
-                                                    <p>1x - <span class="price">$10</span></p>
-                                                </div>
-                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="image"><img src="img/product-img/product-11.jpg" class="cart-thumb" alt=""></a>
-                                                <div class="cart-item-desc">
-                                                    <h6><a href="#">Women's Fashion</a></h6>
-                                                    <p>1x - <span class="price">$10</span></p>
+                                                    <h6><a href="#"></a></h6>
+                                                    <p>1x - <span class="price"></span></p>
                                                 </div>
                                                 <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
                                             </li>
                                             <li class="total">
                                                 <span class="pull-right">Total: $20.00</span>
-                                                <a href="cart.html" class="btn btn-sm btn-cart">Cart</a>
-                                                <a href="checkout-1.html" class="btn btn-sm btn-checkout">Checkout</a>
+                                                <a href="" class="btn btn-sm btn-cart">Cart</a>
+                                                <a href="" class="btn btn-sm btn-checkout">Checkout</a>
                                             </li>
+                                        
                                         </ul>
                                     </div>
+                                    
                                     <div class="header-right-side-menu ml-15">
                                         <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
                                     </div>
@@ -137,7 +132,6 @@
                                         <ul class="navbar-nav animated" id="nav">
                                             <li class="nav-item active"><a class="nav-link" href="{{ route('index') }}">Главная</a></li>
                                             <li class="nav-item active"><a class="nav-link" href="{{ route('shop') }}">Магазин</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="{{ route('action') }}">Акции</a></li>
                                             <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Контакты</a></li>
                                         </ul>
                                     </div>
@@ -228,6 +222,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </footer>
         <!-- ****** Footer Area End ****** -->
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
             <!-- jQuery (Necessary for All JavaScript Plugins) -->
     <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->

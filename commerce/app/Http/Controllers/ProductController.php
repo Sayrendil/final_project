@@ -38,9 +38,8 @@ class ProductController extends Controller
     		'name' => request()->name,
     		'content' => request()->content,
 			'price' => request()->price,
-			'category_id' => request()->category_id,
 		]);
-		$product->categories()->attach(request()->category);
+		$product->categories()->attach(request()->category_id);
 
     	return redirect()->route('product.index');
     }

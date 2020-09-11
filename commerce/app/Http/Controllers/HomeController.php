@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\Post;
+use Session;
+use App\Cart;
 
 class HomeController extends Controller
 {
@@ -30,4 +32,5 @@ class HomeController extends Controller
     public function contact() {
         return view('contact');
     }
+    
 }

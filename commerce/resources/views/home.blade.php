@@ -73,6 +73,23 @@
             </div>
         </section>
         <!-- ****** Top Catagory Area End ****** -->
+
+        <section class="ups">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        .ups.
+                    </div>
+                    <div class="col-lg-4">
+
+                    </div>
+                    <div class="col-lg-4">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ****** Quick View Modal Area Start ****** -->
         <div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">

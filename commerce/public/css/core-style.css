@@ -337,6 +337,29 @@ img {
     border-color: #ff084e;
 }
 
+.contact-form .karl-btn-contact {
+    display: inline-block;
+    min-width: 170px;
+    height: 55px;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 50px;
+    background-color: #333;
+    padding: 0 30px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 49px;
+  }
+  
+  .contact-form .karl-btn-contact:hover,
+  .contact-form .karl-btn-contact:focus {
+    font-weight: 700;
+    color: #fff;
+    background-color: #ff084e;
+    border-color: #ff084e;
+  }
+
 .karl-btn i {
     margin-top: 10px;
 }
@@ -2346,4 +2369,22 @@ ul.ref li {
 	.codrops-icon span {
 		display: none;
 	}
+}
+
+.contact-group {
+    background-color: #f1f1f1;
+    border: 1px solid #7a7a7a;
+    text-align: left;
+    color: #000;
+    padding: 50px;
+    margin: 30px 10px;
+    transition: ease .3s;;
+}
+
+.contact-group:hover {
+    box-shadow: 2px 3px 5px 5px #7a7a7a;
+}
+
+.form-control:focus {
+    box-shadow: 2px 3px 5px 5px #7a7a7a;
 }
